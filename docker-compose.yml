@@ -4,12 +4,12 @@ services:
     image: 'redis'
   node-app:
     build: .
-    command: sh -c "npm install && npm start"
+    # command: sh -c "npm install && nodemon index.js"
     environment: 
       - NODE_ENV=development
       - PORT=4001
     ports:
       - "4001:8081"
-    working_dir: /usr/app
+    working_dir: /usr/app/local
     volumes:
-      - ./:/usr/app:cached
+      - ./:/usr/app/local:cached

@@ -1,19 +1,16 @@
 #Specify a base image
-FROM node:slim
+FROM node:alpine
 
-#Specify a working directory
 WORKDIR /usr/app
-# ADD and COPY are similar, ADD supports zips, web addresses, etc
-#ADD . /usr/app
+COPY ./package.json package-lock.json* ./
+RUN npm install --no-optional && npm cache clean --force
+ENV PATH /usr/app/node_modules/.bin:$PATH
 
-#Copy the dependencies file
-# COPY ./package.json ./
-
-#Install dependencies
-# RUN npm install 
+# Move directories
+WORKDIR /usr/app/local
 
 #Copy remaining files
-COPY ./ /usr/app
+COPY . .
 
 #Default command
-# CMD ["npm","start"]
+CMD ["nodemon","index.js"]
