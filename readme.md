@@ -1,70 +1,17 @@
-Demo for using Docker Compose...
+# Local development
 
-1. You create an app (NodeJS)
-2. You install deps
+1. Defined a volume for our docker container
 
-```
-npm install express --save-dev
-npm install redis --save-dev
-```
+Mounting our local directory to the `/usr/app` directory.
 
-3. You create a Dockerfile 
+This isn't enough though...
 
-4. You build an image from it
+Our NodeJS server needs to restart to show updates.
 
-```
-docker build .
-```
+2. Install `nodemon` or another file monitor to trigger server restarts
 
-5. Then you can run the image
+`npm install --save-dev nodemon`
 
-```
-docker run <image-id>
-```
+Add into the `package.json` the new `start` command:
 
-6. You may see an error due to the redis connection failing...
-
-So we'll need to orchestrate these guys so they can talk to one another -- Docker Compose does this for us!
-
-7. Create a `docker-compose.yml` file
-
-8. Start it up
-
-```
-docker-compose up
-```
-
-9. To rebuild containers when composing
-
-```
-docker-compose up --build
-```
-
-
-# Other maintenance tips
-
-```
-# containers running...
-docker ps
-
-# images built or downloaded...
-docker images
-
-# delete an image
-docker rmi <image id>
-
-# kill a container
-docker kill <container id>
-```
-
-```
-# start as a background process
-docker-compose up -d
-
-# shut down
-docker-compose down
-```
-
-# Sources
-
-Thanks to this walk-through: http://progressivecoder.com/docker-compose-nodejs-application-with-redis-integration/
+`nodemon index.js`

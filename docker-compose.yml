@@ -4,5 +4,12 @@ services:
     image: 'redis'
   node-app:
     build: .
+    command: sh -c "npm install && npm start"
+    environment: 
+      - NODE_ENV=development
+      - PORT=4001
     ports:
       - "4001:8081"
+    working_dir: /usr/app
+    volumes:
+      - ./:/usr/app:cached

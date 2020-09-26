@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "build-image": "docker build .",
     "compose": "docker-compose up"
   },
@@ -15,5 +15,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
