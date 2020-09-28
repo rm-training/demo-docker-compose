@@ -3,7 +3,7 @@ const redis = require('redis')
 
 const app = express()
 
-const client = redis.createClient()
+//const client = redis.createClient()
 // with docker compose
 // const client = redis.createClient({
 //     host: 'redis-server',
