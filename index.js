@@ -3,12 +3,12 @@ const redis = require('redis')
 
 const app = express()
 
-//const client = redis.createClient()
+const client = redis.createClient()
 // with docker compose
-const client = redis.createClient({
-    host: 'redis-server',
-    port: 6379
-}); /**/
+// const client = redis.createClient({
+//     host: 'redis-server',
+//     port: 6379
+// }); /**/
 
 //Set initial visits
 client.set('visits', 0);
